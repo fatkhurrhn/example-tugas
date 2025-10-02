@@ -83,6 +83,45 @@
         © 2025 — Mahasiswa Sistem Informasi yang cinta koding.
     </p>
 
+    <!-- 🔒 Proteksi Halaman -->
+    <script>
+        // Disable klik kanan
+        document.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+            alert("hayoo mo nagapain?");
+        });
+
+        // Disable tombol tertentu (copy, inspect, save, dll)
+        document.addEventListener("keydown", function (e) {
+            if (
+                e.ctrlKey && (
+                    e.key === "u" || // view source
+                    e.key === "s" || // save
+                    e.key === "c" || // copy
+                    e.key === "x" || // cut
+                    e.key === "a"    // select all
+                )
+            ) {
+                e.preventDefault();
+                alert("hayooo mo ngapain?");
+            }
+
+            // F12, Ctrl+Shift+I/J/C
+            if (
+                e.key === "F12" ||
+                (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase()))
+            ) {
+                e.preventDefault();
+                alert("hayoo mo ngapain?");
+            }
+        });
+
+        // Optional: cegah drag gambar
+        document.addEventListener("dragstart", function (e) {
+            e.preventDefault();
+        });
+    </script>
+
 </body>
 
 </html>
