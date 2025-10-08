@@ -1,11 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asset Gallery</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f8f9fb;
+            color: #333;
+        }
+
+        header {
+            background: #0078d7;
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 1.5em;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            background: #fff;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 12px 0;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .tab.active {
+            background: #0078d7;
+            color: #fff;
+        }
+
+        .tab:hover {
+            background: #e5f1fb;
+        }
+
+        /* Konten */
+        .content {
+            display: none;
+            padding: 20px;
+        }
+
+        .content.active {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            padding-bottom: 10px;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 1px solid #eee;
+        }
+
+        .link {
+            display: block;
+            margin: 8px 0;
+            font-size: 13px;
+            color: #0078d7;
+            text-decoration: none;
+            word-break: break-all;
+            text-align: center;
+        }
+
+        button {
+            background: #0078d7;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 6px 10px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #005fa3;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            header {
+                font-size: 1.3em;
+            }
+
+            .content.active {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+        }
+
+        @media (min-width: 601px) and (max-width: 900px) {
+            .content.active {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 901px) and (max-width: 1200px) {
+            .content.active {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1201px) {
+            .content.active {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h3>hayooo mo ngapain?</h3>
+    <header>📂 Asset PemWeb01</header>
+<br>
+    <div class="tabs">
+        <div class="tab active" data-tab="foto">📸 Foto</div>
+        <div class="tab" data-tab="gif">🎞️ GIF</div>
+    </div>
+
+    <div id="foto" class="content active"></div>
+    <div id="gif" class="content"></div>
+
+    <script>
+        async function loadAssets() {
+            try {
+                const res = await fetch('img.json');
+                const data = await res.json();
+
+                const fotoContainer = document.getElementById('foto');
+                const gifContainer = document.getElementById('gif');
+
+                data.forEach(item => {
+                    const url = `${window.location.origin}/${item.src}`;
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.innerHTML = `
+            <img src="${item.src}" alt="${item.jenis}">
+            <a href="${url}" class="link" target="_blank">${url}</a>
+            <button onclick="copyToClipboard('${url}')">Copy URL</button>
+          `;
+                    if (item.jenis === 'foto') fotoContainer.appendChild(card);
+                    else gifContainer.appendChild(card);
+                });
+            } catch (err) {
+                console.error('❌ Gagal memuat img.json:', err);
+            }
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text)
+                .then(() => alert('✅ Link berhasil disalin!'))
+                .catch(() => alert('❌ Gagal menyalin link.'));
+        }
+
+        // Tab handler
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        loadAssets();
+    </script>
 </body>
+
 </html>

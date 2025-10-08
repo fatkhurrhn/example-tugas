@@ -1,0 +1,23 @@
+[
+  { "jenis": "foto", "src": "assets/F01.jpg" },
+  { "jenis": "foto", "src": "assets/F02.jpg" },
+  { "jenis": "foto", "src": "assets/F03.jpg" },
+  { "jenis": "foto", "src": "assets/F04.jpg" },
+  { "jenis": "foto", "src": "assets/F05.jpg" },
+  { "jenis": "foto", "src": "assets/F06.jpg" },
+  { "jenis": "foto", "src": "assets/F07.jpg" },
+  { "jenis": "foto", "src": "assets/F08.jpg" },
+  { "jenis": "foto", "src": "assets/F09.jpg" },
+  { "jenis": "foto", "src": "assets/F10.jpg" },
+  { "jenis": "foto", "src": "assets/F11.jpg" },
+  { "jenis": "foto", "src": "assets/F12.jpg" },
+  { "jenis": "foto", "src": "assets/F13.jpg" },
+
+  { "jenis": "gif", "src": "assets/G01.gif" },
+  { "jenis": "gif", "src": "assets/G02.gif" },
+  { "jenis": "gif", "src": "assets/G03.gif" },
+  { "jenis": "gif", "src": "assets/G04.gif" },
+  { "jenis": "gif", "src": "assets/G05.gif" },
+  { "jenis": "gif", "src": "assets/G06.gif" },
+  { "jenis": "gif", "src": "assets/G07.gif" }
+]

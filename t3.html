@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mahasiswa SI - Jago IT & Suka Koding 💻</title>
+</head>
+
+<body
+    style="margin:0; font-family:Arial, sans-serif; background-image:url('https://www.w3schools.com/html/img_girl.jpg'); background-size:cover; background-attachment:fixed; background-position:center; color:#222;">
+
+    <!-- Header -->
+    <div style="background-color:rgba(31,57,99,0.9); color:white; text-align:center; padding:20px;">
+        <h2 style="margin:0;">Mahasiswa Sistem Informasi</h2>
+        <p style="font-size:14px; margin:5px 0;">Jago IT 💻 • Suka Koding • Berkarakter 🌱</p>
+    </div>
+
+    <!-- Bagian Images -->
+    <div style="background-color:rgba(255,255,255,0.9); padding:15px; margin:15px; border-radius:10px;">
+        <h3 style="color:#355485;">📸 HTML Images</h3>
+        <p>Tag <code>&lt;img&gt;</code> digunakan untuk menampilkan gambar + dijadikan tautan. Contohnya:</p>
+        <a href="https://www.w3schools.com/html/" target="_blank">
+            <img src="https://www.w3schools.com/html/img_girl.jpg" alt="Belajar HTML" width="100%"
+                style="max-width:320px; display:block; margin:auto; border-radius:10px;">
+        </a>
+
+        <p style="margin-top:10px;">Contoh <b>gambar animasi (GIF)</b>:</p>
+        <img src="https://media.giphy.com/media/L8K62iTDkzGX6/giphy.gif" alt="Ngoding seru" width="80%"
+            style="display:block; margin:auto; border-radius:10px;">
+
+        <p style="margin-top:10px;">Dan berikut penerapan <b>&lt;picture&gt;</b> element:</p>
+        <picture>
+            <source media="(min-width:650px)" srcset="https://www.w3schools.com/html/img_chania.jpg">
+            <source media="(min-width:465px)" srcset="https://www.w3schools.com/html/img_girl.jpg">
+            <img src="https://www.w3schools.com/html/img_smallflower.jpg" alt="Bunga kecil"
+                style="width:100%; max-width:320px; display:block; margin:auto; border-radius:10px;">
+        </picture>
+    </div>
+
+    <!-- Bagian Image Map -->
+    <div style="background-color:rgba(255,255,255,0.9); padding:15px; margin:15px; border-radius:10px;">
+        <h3 style="color:#355485;">🗺️ Image Map</h3>
+        <p>Kita bisa membuat gambar yang memiliki area klik berbeda-beda:</p>
+        <img src="https://www.w3schools.com/html/workplace.jpg" alt="Tempat Kerja" usemap="#mapBelajar" width="100%"
+            style="max-width:350px; display:block; margin:auto; border-radius:10px;">
+        <map name="mapBelajar">
+            <area shape="rect" coords="34,44,270,350" href="https://www.w3schools.com/html/computer.htm" alt="Komputer">
+            <area shape="circle" coords="337,300,44" href="https://www.w3schools.com/html/coffee.htm" alt="Kopi">
+        </map>
+        <p style="font-size:14px;">➡️ Coba klik bagian komputer atau cangkir kopi di gambar di atas!</p>
+    </div>
+
+    <!-- Bagian Table -->
+    <div style="background-color:rgba(255,255,255,0.9); padding:15px; margin:15px; border-radius:10px;">
+        <h3 style="color:#355485;">📊 HTML Tables</h3>
+        <p>Tabel digunakan untuk menampilkan data baris dan kolom:</p>
+
+        <table style="width:100%; border-collapse:collapse; text-align:center;">
+            <tr style="background-color:#4f90c6; color:white;">
+                <th style="border:1px solid #999; padding:6px;" colspan="3">Data Mahasiswa SI</th>
+            </tr>
+            <tr style="background-color:#e8f1fb;">
+                <th style="border:1px solid #999; padding:6px;">Nama</th>
+                <th style="border:1px solid #999; padding:6px;">NIM</th>
+                <th style="border:1px solid #999; padding:6px;">Minat</th>
+            </tr>
+            <tr>
+                <td style="border:1px solid #999; padding:6px;">Fathur</td>
+                <td style="border:1px solid #999; padding:6px;">0110122090</td>
+                <td style="border:1px solid #999; padding:6px;">Web Development</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #999; padding:6px;">Riyan</td>
+                <td style="border:1px solid #999; padding:6px;">0110122091</td>
+                <td style="border:1px solid #999; padding:6px;">UI/UX Design</td>
+            </tr>
+            <tr>
+                <td colspan="3" style="border:1px solid #999; padding:6px; font-weight:bold;">Jumlah Mahasiswa Aktif: 2
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Bagian Lists -->
+    <div style="background-color:rgba(255,255,255,0.9); padding:15px; margin:15px; border-radius:10px;">
+        <h3 style="color:#355485;">📋 HTML Lists</h3>
+        <p><b>Unordered List (daftar tanpa urutan):</b></p>
+        <ul>
+            <li>Analisis Sistem</li>
+            <li>Desain Database</li>
+            <li>Pemrograman Web</li>
+        </ul>
+
+        <p><b>Ordered List (daftar berurutan):</b></p>
+        <ol>
+            <li>Belajar HTML</li>
+            <li>Belajar CSS</li>
+            <li>Belajar JavaScript</li>
+        </ol>
+
+        <p><b>Description List:</b></p>
+        <dl>
+            <dt><b>HTML</b></dt>
+            <dd>Bahasa untuk membuat struktur web.</dd>
+            <dt><b>CSS</b></dt>
+            <dd>Bahasa untuk memperindah tampilan web.</dd>
+            <dt><b>JavaScript</b></dt>
+            <dd>Bahasa untuk membuat web menjadi interaktif.</dd>
+        </dl>
+    </div>
+
+    <!-- Footer -->
+    <div style="background-color:rgba(31,57,99,0.9); color:white; text-align:center; padding:10px; font-size:13px;">
+        © 2025 STT Nurul Fikri — Jago IT, Berkarakter
+    </div>
+</body>
+
+</html>
