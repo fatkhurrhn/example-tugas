@@ -12,6 +12,9 @@
   { "jenis": "foto", "src": "assets/F11.jpg" },
   { "jenis": "foto", "src": "assets/F12.jpg" },
   { "jenis": "foto", "src": "assets/F13.jpg" },
+  { "jenis": "foto", "src": "assets/F14.jpg" },
+  { "jenis": "foto", "src": "assets/F15.jpg" },
+  { "jenis": "foto", "src": "assets/F16.jpg" },
 
   { "jenis": "gif", "src": "assets/G01.gif" },
   { "jenis": "gif", "src": "assets/G02.gif" },
