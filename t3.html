@@ -41,7 +41,7 @@
     <div style="background-color:rgba(255,255,255,0.9); padding:15px; margin:15px; border-radius:10px;">
         <h3 style="color:#355485;">🗺️ Image Map</h3>
         <p>Kita bisa membuat gambar yang memiliki area klik berbeda-beda:</p>
-        <img src="https://www.w3schools.com/html/workplace.jpg" alt="Tempat Kerja" usemap="#mapBelajar" width="100%"
+        <img src="https://exampllee.vercel.app/assets/F16.jpg" alt="Tempat Kerja" usemap="#mapBelajar" width="100%"
             style="max-width:350px; display:block; margin:auto; border-radius:10px;">
         <map name="mapBelajar">
             <area shape="rect" coords="34,44,270,350" href="https://www.w3schools.com/html/computer.htm" alt="Komputer">
@@ -92,6 +92,7 @@
         </ul>
 
         <p><b>Ordered List (daftar berurutan):</b></p>
+        <!-- type="1, A, a, I, i" -->
         <ol>
             <li>Belajar HTML</li>
             <li>Belajar CSS</li>
@@ -113,6 +114,46 @@
     <div style="background-color:rgba(31,57,99,0.9); color:white; text-align:center; padding:10px; font-size:13px;">
         © 2025 STT Nurul Fikri — Jago IT, Berkarakter
     </div>
+
+    <!-- 🔒 Proteksi Halaman -->
+    <script>
+        // Disable klik kanan
+        document.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+            alert("hayoo mo nagapain?");
+        });
+
+        // Disable tombol tertentu (copy, inspect, save, dll)
+        document.addEventListener("keydown", function (e) {
+            if (
+                e.ctrlKey && (
+                    e.key === "u" || // view source
+                    e.key === "s" || // save
+                    e.key === "c" || // copy
+                    e.key === "x" || // cut
+                    e.key === "a"    // select all
+                )
+            ) {
+                e.preventDefault();
+                alert("hayooo mo ngapain?");
+            }
+
+            // F12, Ctrl+Shift+I/J/C
+            if (
+                e.key === "F12" ||
+                (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase()))
+            ) {
+                e.preventDefault();
+                alert("hayoo mo ngapain?");
+            }
+        });
+
+        // Optional: cegah drag gambar
+        document.addEventListener("dragstart", function (e) {
+            e.preventDefault();
+        });
+    </script>
+
 </body>
 
 </html>
