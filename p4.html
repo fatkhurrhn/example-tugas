@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Belajar HTML Dasar (Untuk Mahasiswa Baru)</title>
+    <!-- INTERNAL CSS -->
+    <style>
+        :root {
+            --bg: #f7f7fb;
+            --card: #ffffff;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --brand: #2563eb;
+            --brand-2: #1d4ed8;
+            --border: #e5e7eb;
+            --accent: #eef2ff;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+            color: var(--text);
+            background: var(--bg)
+        }
+
+        a {
+            color: var(--brand);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        /* --- Layout dasar dengan semantic tags --- */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: linear-gradient(0deg, var(--brand), var(--brand-2));
+            color: #fff;
+            border-bottom: 1px solid rgba(255, 255, 255, .15)
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 16px
+        }
+
+        .header-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0
+        }
+
+        .logo {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-weight: 700
+        }
+
+        .logo .mark {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: #fff;
+            display: inline-block
+        }
+
+        nav ul {
+            display: flex;
+            gap: 18px;
+            list-style: none;
+            margin: 0;
+            padding: 0
+        }
+
+        nav a {
+            color: #fff;
+            font-weight: 600;
+            padding: 8px 10px;
+            border-radius: 10px
+        }
+
+        nav a.active,
+        nav a:hover {
+            background: rgba(255, 255, 255, .15)
+        }
+
+        main {
+            padding: 28px 0
+        }
+
+        .grid {
+            display: grid;
+            gap: 22px;
+            grid-template-columns: 1.2fr .8fr;
+            align-items: start
+        }
+
+        @media (max-width: 850px) {
+            .grid {
+                grid-template-columns: 1fr
+            }
+
+            nav ul {
+                flex-wrap: wrap
+            }
+        }
+
+        section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px
+        }
+
+        section h2 {
+            margin-top: 0
+        }
+
+        /* Kartu */
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 16px;
+            box-shadow: 0 1px 0 rgba(17, 24, 39, .04)
+        }
+
+        .muted {
+            color: var(--muted)
+        }
+
+        .chip {
+            display: inline-block;
+            font-size: 12px;
+            border: 1px solid var(--border);
+            padding: 4px 8px;
+            border-radius: 999px;
+            background: var(--accent)
+        }
+
+        /* Demonstrasi Block vs Inline */
+        .demo-wrap {
+            display: grid;
+            gap: 16px
+        }
+
+        .demo-box {
+            padding: 12px;
+            border: 1px dashed var(--border);
+            border-radius: 12px;
+            background: #fafafa
+        }
+
+        .block-example p,
+        .block-example div {
+            background: #eef2ff;
+            padding: 8px;
+            border-radius: 8px;
+            margin: 8px 0
+        }
+
+        .inline-example span,
+        .inline-example a,
+        .inline-example strong,
+        .inline-example em {
+            background: #dcfce7;
+            padding: 4px 6px;
+            border-radius: 6px;
+            margin-right: 6px
+        }
+
+        /* Div sebagai container + center */
+        .container-demo {
+            width: 90%;
+            max-width: 700px;
+            margin: 0 auto;
+            border: 2px dashed #c7d2fe;
+            background: #eef2ff;
+            padding: 12px;
+            border-radius: 12px
+        }
+
+        /* Class & ID */
+        .city {
+            background: #fff7ed
+        }
+
+        .main {
+            border-left: 4px solid #fb923c
+        }
+
+        #judulUnik {
+            font-weight: 800
+        }
+
+        /* Iframe */
+        .iframe-box iframe {
+            width: 100%;
+            height: 260px;
+            border: 0;
+            border-radius: 12px;
+        }
+
+        .iframe-box .note {
+            font-size: 13px
+        }
+
+        /* Aside sidebar */
+        aside {
+            position: sticky;
+            top: 76px
+        }
+
+        aside .tips li {
+            margin: 6px 0
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 24px;
+            padding: 22px 0;
+            background: #0f172a;
+            color: #cbd5e1
+        }
+
+        footer a {
+            color: #cbd5e1
+        }
+
+        /* Mini util */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px
+        }
+
+        .row .chip {
+            margin-bottom: 6px
+        }
+
+        .btn-top {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 8px 12px;
+            border-radius: 10px;
+            background: #e2e8f0
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container header-wrap">
+            <div class="logo"><span class="mark"></span><span>HTML Dasar • Maba</span></div>
+            <nav aria-label="Navigasi utama">
+                <ul>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#blok-inline">Block vs Inline</a></li>
+                    <li><a href="#div">Div Container</a></li>
+                    <li><a href="#class-id">Class & ID</a></li>
+                    <li><a href="#iframe">Iframe</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="grid">
+            <!-- KOLOM KONTEN UTAMA -->
+            <div>
+                <!-- SECTION HOME -->
+                <section id="home" aria-labelledby="home-title">
+                    <h2 id="home-title">Selamat Datang, Mahasiswa Baru! 👋</h2>
+                    <p class="muted">Halaman ini merangkum materi: <span class="chip">block vs inline</span> <span
+                            class="chip">div</span> <span class="chip">class & id</span> <span
+                            class="chip">iframe</span> dan <span class="chip">layout semantik</span>.</p>
+                    <div class="card">
+                        <p>Gunakan navbar di atas untuk melompat ke tiap bagian (contoh <em>bookmark</em> dengan
+                            <code>id</code>).</p>
+                    </div>
+                </section>
+
+                <!-- SECTION BLOCK vs INLINE -->
+                <section id="blok-inline" aria-labelledby="bi-title">
+                    <h2 id="bi-title">Perbedaan Block vs Inline</h2>
+                    <div class="demo-wrap">
+                        <div class="demo-box block-example">
+                            <h3>Block-level elements</h3>
+                            <p>&lt;p&gt; dan &lt;div&gt; akan mengisi lebar penuh dan mulai di baris baru.</p>
+                            <p>Ini paragraf (p) sebagai <strong>block</strong>.</p>
+                            <div>Ini &lt;div&gt; juga <strong>block</strong>.</div>
+                        </div>
+                        <div class="demo-box inline-example">
+                            <h3>Inline elements</h3>
+                            <p>Elemen <em>inline</em> tidak memulai baris baru dan lebarnya sesuai konten:</p>
+                            <span>&lt;span&gt;</span>
+                            <a href="#home">&lt;a&gt; link</a>
+                            <strong>&lt;strong&gt;</strong>
+                            <em>&lt;em&gt;</em>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION DIV -->
+                <section id="div" aria-labelledby="div-title">
+                    <h2 id="div-title">&lt;div&gt; sebagai Container</h2>
+                    <div class="container-demo">
+                        <p>Ini contoh <code>&lt;div&gt;</code> yang berfungsi sebagai <em>container</em>. Lebar dibatasi
+                            dan dipusatkan dengan <code>margin: auto</code>.</p>
+                    </div>
+                </section>
+
+                <!-- SECTION CLASS & ID -->
+                <section id="class-id" aria-labelledby="ci-title">
+                    <h2 id="ci-title"><span id="judulUnik">Class</span> &amp; <span class="chip">ID</span></h2>
+                    <article class="card city main" aria-labelledby="artikel-1">
+                        <h3 id="artikel-1">Artikel Mini: Perbedaan Class vs ID</h3>
+                        <p><strong>Class</strong> dapat dipakai banyak elemen (contoh class <code>city</code>,
+                            <code>main</code> pada artikel ini), sedangkan <strong>ID</strong> harus unik dalam satu
+                            halaman (contoh <code>#judulUnik</code> di heading).</p>
+                        <div class="row" aria-label="Contoh banyak class">
+                            <span class="chip">.city</span>
+                            <span class="chip">.main</span>
+                            <span class="chip">#judulUnik</span>
+                        </div>
+                        <p>
+                            Coba klik <a href="#iframe">menuju bagian Iframe</a> (contoh <em>bookmark</em> link ke
+                            <code>id</code> lain).
+                        </p>
+                        </article>
+                    </section>
+
+                    <!-- SECTION IFRAME -->
+                    <section id="iframe" aria-labelledby="iframe-title">
+                        <h2 id="iframe-title">Menyematkan Halaman dengan &lt;iframe&gt;</h2>
+                        <div class="iframe-box card">
+                            <iframe src="https://www.wikipedia.org" title="Wikipedia di dalam iframe (contoh)"></iframe>
+                            <p class="note muted">Iframe di atas menggunakan attribute <code>title</code>, ukuran diatur
+                                lewat CSS, dan tanpa border.</p>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- KOLOM SAMPING -->
+                <aside aria-label="Sidebar tips" class="card">
+                    <h3>Tips Belajar Cepat</h3>
+                    <ul class="tips">
+                        <li>Gunakan <code>header</code>, <code>nav</code>, <code>section</code>, <code>article</code>,
+                            <code>aside</code>, <code>footer</code> untuk struktur yang jelas.</li>
+                        <li>Bedakan <strong>block</strong> vs <strong>inline</strong> saat menyusun layout.</li>
+                        <li>Manfaatkan <strong>class</strong> untuk gaya berulang, <strong>id</strong> untuk identitas unik.
+                        </li>
+                        <li>Sematkan materi referensi menggunakan <code>iframe</code> bila perlu.</li>
+                </ul>
+                <a class="btn-top" href="#home">↑ Kembali ke atas</a>
+            </aside>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Praktikum Web 1 • Halaman contoh untuk Maba. Dibuat dengan elemen semantik dan CSS internal.
+            </p>
+            <p>Referensi belajar umum: W3Schools / GeeksforGeeks (lihat modul dosen Anda).</p>
+        </div>
+    </footer>
+</body>
+
+</html>
