@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aku Suka Coding — Form Tanpa JavaScript</title>
+  <style>
+    /* ====== Light Theme, Tanpa JS, Sederhana ====== */
+    :root{
+      --bg:#f7f7fb;
+      --paper:#ffffff;
+      --ink:#1f2937;
+      --sub:#64748b;
+      --line:#e5e7eb;
+      --brand:#2563eb;
+      --brand-ink:#ffffff;
+      --muted:#475569;
+      --gap:1rem;
+      --radius:12px;
+      --focus:#93c5fd;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:var(--bg); color:var(--ink); line-height:1.55;
+    }
+
+    /* Header + Navbar (digabung) */
+    header{
+      position:sticky; top:0; z-index:10;
+      background:var(--paper); border-bottom:1px solid var(--line);
+    }
+    .head-wrap{
+      max-width:1100px; margin:0 auto; padding:.75rem 1rem;
+      display:flex; align-items:center; gap:1rem; justify-content:space-between; flex-wrap:wrap;
+    }
+    .brand{
+      display:flex; align-items:center; gap:.6rem; min-width:220px;
+    }
+    .logo{
+      width:36px; height:36px; border-radius:8px; background:#e8f0ff; border:1px solid #dbeafe;
+      display:grid; place-items:center; font-weight:800; color:#1e40af;
+    }
+    .title{ margin:0; font-size:1.2rem; }
+    nav ul{
+      list-style:none; margin:0; padding:0; display:flex; gap:.5rem; flex-wrap:wrap;
+    }
+    nav a{
+      display:inline-block; padding:.45rem .75rem; border:1px solid #d9e2ff; border-radius:999px;
+      background:#ffffff; color:#1e40af; text-decoration:none; font-weight:600; font-size:.92rem;
+    }
+    nav a:hover{ background:#f3f7ff; }
+    nav a:focus{ outline:2px solid var(--focus); outline-offset:2px; }
+
+    /* Layout: sidebar + content */
+    .container{
+      max-width:1100px; margin:1rem auto; padding:0 1rem;
+      display:grid; grid-template-columns:260px 1fr; gap:var(--gap);
+    }
+    aside, .content, footer{
+      background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+    }
+    aside{ padding:1rem; }
+    .content{ padding:1rem; }
+
+    .hint{ color:var(--sub); font-size:.95rem; }
+    .list{ margin:.6rem 0 0; padding:0; display:grid; gap:.5rem; }
+    .list li{ list-style:none; border-left:3px solid #dbeafe; padding-left:.5rem; color:#0f172a; }
+
+    /* Form rapi */
+    form{ display:grid; gap:1rem; }
+    fieldset{
+      border:1px solid var(--line); border-radius:10px; padding:1rem; margin:0;
+    }
+    legend{ padding:0 .5rem; font-weight:700; color:#0f172a; }
+    .grid{ display:grid; grid-template-columns:1fr 1fr; gap:var(--gap); }
+    .row{ display:grid; grid-template-columns:180px 1fr; gap:.75rem; align-items:start; }
+    .row .help{ grid-column:2 / -1; margin-top:.15rem; }
+    label{ font-weight:600; color:#0f172a; line-height:1.3; }
+
+    input[type="text"],input[type="email"],input[type="password"],input[type="number"],
+    input[type="date"],input[type="time"],input[type="url"],input[type="tel"],
+    input[type="search"],input[type="file"],input[type="color"],input[type="range"],
+    select, textarea{
+      width:100%; padding:.6rem .7rem; border:1px solid #cfd7e3; border-radius:10px; background:#fff; color:var(--ink);
+    }
+    textarea{ min-height:110px; }
+    input[type="color"]{ padding:0; height:2.25rem; }
+    input:focus, select:focus, textarea:focus{
+      outline:2px solid var(--focus); outline-offset:1px; border-color:#93c5fd;
+    }
+
+    .checkgroup, .radiogroup{ display:flex; gap:1rem; flex-wrap:wrap; }
+    .inline-help{ display:block; font-size:.9rem; color:var(--sub); margin-top:.25rem; }
+
+    .actions{ display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.2rem; }
+    button, input[type="submit"], input[type="reset"]{
+      border:1px solid var(--brand); background:var(--brand); color:var(--brand-ink);
+      padding:.62rem 1rem; border-radius:10px; font-weight:700; cursor:pointer;
+    }
+    input[type="reset"]{ border-color:#94a3b8; background:#e2e8f0; color:#0f172a; }
+
+    /* Footer */
+    footer{ max-width:1100px; margin:1rem auto 2rem; padding:1rem; color:#334155; }
+
+    /* Responsif */
+    @media (max-width: 980px){
+      .container{ grid-template-columns:1fr; }
+      .grid{ grid-template-columns:1fr; }
+      .row{ grid-template-columns:1fr; }
+      .row .help{ grid-column:1 / -1; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header + Navbar -->
+  <header id="home">
+    <div class="head-wrap">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">AC</div>
+        <h1 class="title">Aku Suka Coding</h1>
+      </div>
+      <nav aria-label="Navigasi utama">
+        <ul>
+          <li><a href="#tentang">Tentang</a></li>
+          <li><a href="#tugas">Tugas</a></li>
+          <li><a href="#form">Form</a></li>
+          <li><a href="#kontak">Kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <div class="container">
+    <!-- Sidebar -->
+    <aside aria-labelledby="judul-sidebar" id="tentang">
+      <h2 id="judul-sidebar" style="margin:.2rem 0 .4rem; font-size:1.05rem;">Tentang Aku</h2>
+      <p class="hint">Halo! Ini halaman bertema <strong>“Aku Suka Coding”</strong> — sederhana, bersih, dan tanpa JavaScript.</p>
+      <ul class="list">
+        <li>Semantik & aksesibilitas</li>
+        <li>Validasi HTML (required, pattern, min/max)</li>
+        <li>Tanpa JS / framework</li>
+      </ul>
+    </aside>
+
+    <!-- Content -->
+    <section class="content" id="tugas" aria-labelledby="judul-konten">
+      <h2 id="judul-konten" style="margin:.2rem 0 .8rem; font-size:1.15rem;">“Aku Suka Coding”</h2>
+      <p class="hint">Isi form berikut untuk bergabung dengan komunitas “Aku Suka Coding”. Semua validasi memakai HTML standar.</p>
+
+      <!-- Form (tanpa JavaScript) -->
+      <form id="form" action="https://httpbin.org/post" method="post" enctype="multipart/form-data" target="_blank" autocomplete="on">
+        <fieldset>
+            <legend>Data Diri</legend>
+            <div style="display: grid; gap: 1rem;">
+              <!-- Nama -->
+              <div>
+                <label for="nama">Nama Lengkap</label><br>
+                <input id="nama" name="nama" type="text" placeholder="Masukkan nama lengkap kamu"
+                  required minlength="3" maxlength="60"
+                  style="width:100%; padding:0.6rem; border:1px solid #cfd7e3; border-radius:10px;">
+              </div>
+          
+              <!-- Email -->
+              <div>
+                <label for="email">Email</label><br>
+                <input id="email" name="email" type="email" placeholder="nama@contoh.com"
+                  required
+                  style="width:100%; padding:0.6rem; border:1px solid #cfd7e3; border-radius:10px;">
+              </div>
+          
+              <!-- Tanggal Lahir -->
+              <div>
+                <label for="tgl_lahir">Tanggal Lahir</label><br>
+                <input id="tgl_lahir" name="tgl_lahir" type="date"
+                  required
+                  style="width:100%; padding:0.6rem; border:1px solid #cfd7e3; border-radius:10px;">
+              </div>
+          
+              <!-- Hobi -->
+              <div>
+                <label for="hobi">Hobi</label><br>
+                <input id="hobi" name="hobi" type="text" placeholder="Contoh: Coding, Musik, Membaca"
+                  maxlength="100"
+                  style="width:100%; padding:0.6rem; border:1px solid #cfd7e3; border-radius:10px;">
+              </div>
+            </div>
+          </fieldset>
+          
+
+          <fieldset>
+            <legend>Preferensi Coding</legend>
+            <div style="display: grid; gap: 1.2rem;">
+          
+              <!-- Fokus Belajar -->
+              <div>
+                <label style="font-weight: 600; display: block; margin-bottom: .4rem;">Fokus Belajar</label>
+                <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+                  <label><input type="radio" name="fokus" value="web" required> Web</label>
+                  <label><input type="radio" name="fokus" value="mobile"> Mobile</label>
+                  <label><input type="radio" name="fokus" value="ai"> AI</label>
+                </div>
+                <small style="color:#64748b; display:block; margin-top:.3rem;">Pilih salah satu bidang utama yang kamu pelajari.</small>
+              </div>
+          
+              <!-- Topik Favorit -->
+              <div>
+                <label style="font-weight: 600; display: block; margin-bottom: .4rem;">Topik Favorit</label>
+                <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+                  <label><input type="checkbox" name="topik" value="frontend"> Frontend</label>
+                  <label><input type="checkbox" name="topik" value="backend"> Backend</label>
+                  <label><input type="checkbox" name="topik" value="datasci"> Data Science</label>
+                </div>
+                <small style="color:#64748b; display:block; margin-top:.3rem;">Kamu bisa memilih lebih dari satu topik yang diminati.</small>
+              </div>
+          
+              <!-- Level -->
+              <div>
+                <label for="level" style="font-weight: 600; display: block; margin-bottom: .4rem;">Level Kemampuan (0–10)</label>
+                <input id="level" name="level" type="range" min="0" max="10" value="5"
+                  style="width:100%; cursor:pointer;">
+                <small style="color:#64748b; display:block; margin-top:.3rem;">Geser untuk menilai level kemampuan coding kamu saat ini.</small>
+              </div>
+          
+              <!-- Warna Favorit -->
+              <div>
+                <label for="warna" style="font-weight: 600; display: block; margin-bottom: .4rem;">Warna Favorit</label>
+                <input id="warna" name="warna" type="color" value="#2563eb"
+                  style="width:100%; height:2.5rem; cursor:pointer;">
+                <small style="color:#64748b; display:block; margin-top:.3rem;">Pilih warna yang mewakili gaya coding kamu.</small>
+              </div>
+          
+            </div>
+          </fieldset>
+          
+
+        <fieldset>
+          <legend>Portofolio</legend>
+          <div class="grid">
+            <div class="row">
+              <label for="website">URL Portofolio</label>
+              <div>
+                <input id="website" name="website" type="url" placeholder="https://contoh.dev" />
+              </div>
+            </div>
+
+            <div class="row">
+              <label for="repo">Link Repo</label>
+              <div>
+                <input id="repo" name="repo" type="url" placeholder="https://github.com/nama/repo" />
+              </div>
+            </div>
+
+            <div class="row">
+              <label for="cv">Upload CV</label>
+              <div>
+                <input id="cv" name="cv" type="file" accept=".pdf,.doc,.docx" aria-describedby="help-cv" />
+                <small id="help-cv" class="inline-help">Format: PDF/DOC/DOCX.</small>
+              </div>
+            </div>
+
+            <div class="row">
+              <label for="bio">Cerita Singkat</label>
+              <div>
+                <textarea id="bio" name="bio" placeholder="Tuliskan kenapa kamu suka coding..." maxlength="240"></textarea>
+                <small class="inline-help">Maksimal 240 karakter.</small>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="actions">
+          <input type="submit" value="Kirim" />
+          <input type="reset" value="Reset" />
+          <span class="hint" aria-hidden="true">Tanpa JavaScript</span>
+        </div>
+      </form>
+
+      <p id="kontak" class="hint" style="margin-top:1rem">
+        Setelah submit, respons server (httpbin) akan terbuka di tab baru agar kamu bisa melihat payload tanpa JS.
+      </p>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <strong>Kontak</strong> • <a href="#home">Kembali ke atas</a><br/>
+    &copy; 2025 — “Aku Suka Coding”. Dibangun dengan HTML + CSS murni, tanpa JavaScript.
+  </footer>
+
+  -- 🔒 Proteksi Halaman -->
+<script>
+    // Disable klik kanan
+    document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+        alert("hayoo mo nagapain?");
+    });
+
+    // Disable tombol tertentu (copy, inspect, save, dll)
+    document.addEventListener("keydown", function (e) {
+        if (
+            e.ctrlKey && (
+                e.key === "u" || // view source
+                e.key === "s" || // save
+                e.key === "c" || // copy
+                e.key === "x" || // cut
+                e.key === "a"    // select all
+            )
+        ) {
+            e.preventDefault();
+            alert("hayooo mo ngapain?");
+        }
+
+        // F12, Ctrl+Shift+I/J/C
+        if (
+            e.key === "F12" ||
+            (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase()))
+        ) {
+            e.preventDefault();
+            alert("hayoo mo ngapain?");
+        }
+    });
+
+    // Optional: cegah drag gambar
+    document.addEventListener("dragstart", function (e) {
+        e.preventDefault();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Praktikum: HTML Forms</title>
+    <style>
+        :root {
+            --gap: 1rem;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            margin: 0;
+            background: #f7f7f8;
+            color: #222;
+        }
+
+        header,
+        main,
+        footer {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1.25rem;
+        }
+
+        header {
+            background: white;
+            border-bottom: 1px solid #e6e6e9;
+            position: sticky;
+            top: 0;
+        }
+
+        h1 {
+            margin: 0 0 .5rem;
+            font-size: 1.5rem;
+        }
+
+        .note {
+            background: #fff8e1;
+            border: 1px solid #ffe082;
+            padding: .75rem;
+            border-radius: .5rem;
+        }
+
+        section {
+            background: white;
+            border: 1px solid #e6e6e9;
+            border-radius: .75rem;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        fieldset {
+            border: 1px solid #dcdce0;
+            border-radius: .5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        legend {
+            padding: 0 .5rem;
+            font-weight: 600;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--gap);
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            align-items: center;
+            gap: .75rem;
+        }
+
+        label {
+            font-weight: 600;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="number"],
+        input[type="date"],
+        input[type="time"],
+        input[type="url"],
+        input[type="tel"],
+        input[type="search"],
+        input[type="color"],
+        input[type="file"],
+        select,
+        textarea,
+        input[type="range"] {
+            width: 100%;
+            padding: .55rem .6rem;
+            border: 1px solid #cfd3d8;
+            border-radius: .5rem;
+            background: #fff;
+        }
+
+        input[type="color"] {
+            padding: 0;
+            height: 2.25rem;
+        }
+
+        textarea {
+            min-height: 90px;
+        }
+
+        .actions {
+            display: flex;
+            gap: .75rem;
+            flex-wrap: wrap;
+        }
+
+        button,
+        input[type="submit"],
+        input[type="reset"] {
+            border: 1px solid #1e88e5;
+            background: #2196f3;
+            color: white;
+            padding: .6rem 1rem;
+            border-radius: .5rem;
+            cursor: pointer;
+        }
+
+        input[type="reset"] {
+            border-color: #9e9e9e;
+            background: #bdbdbd;
+        }
+
+        .muted {
+            color: #666;
+            font-size: .95rem;
+        }
+
+        code {
+            background: #eef2f6;
+            padding: .1rem .35rem;
+            border-radius: .25rem;
+        }
+
+        footer {
+            color: #666;
+            font-size: .9rem;
+        }
+
+        @media (max-width: 720px) {
+            .row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Praktikum: HTML Forms</h1>
+    </header>
+
+    <main>
+
+        <section>
+            <form action="" method="">
+                <fieldset>
+                    <legend>Identitas</legend>
+                    <div class="grid">
+                        <div class="row">
+                            <label for="">Nama Lengkap</label>
+                            <input id="" name="" type="text" placeholder="Fathur" size="20" maxlength="30" required
+                                autofocus>
+                        </div>
+                        <div class="row">
+                            <label for="">Tanggal Lahir</label>
+                            <input id="tgl" name="" type="date" required>
+                        </div>
+                        <div class="row">
+                            <label for="">Foto Profil</label>
+                            <input id="berkas" name="berkas" type="file" required>
+                        </div>
+                        <div class="row">
+                            <label for="">NIM (readonly)</label>
+                            <input id="" name="" type="text" value="23000001" readonly>
+                        </div>
+                        <div class="row">
+                            <label for="">Contoh Disabled</label>
+                            <input id="" name="" type="text" value="Tidak ikut terkirim" disabled>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Preferensi</legend>
+                    <div class="grid">
+                        <div class="row">
+                            <label for="">Jurusan</label>
+                            <select id="" name="" required>
+                                <optgroup label="Saintek">
+                                    <option value="" selected>Teknik Informatika</option>
+                                    <option value="">Sistem Informasi</option>
+                                    <option value="">Teknik Komputer</option>
+                                </optgroup>
+                                <optgroup label="Soshum">
+                                    <option value="">Manajemen</option>
+                                    <option value="">Akuntansi</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <div class="row">
+                            <label>Jenjang</label>
+                            <div>
+                                <label><input type="radio" name="" value="d3" required> D3</label>
+                                <label><input type="radio" name="" value="s1"> S1</label>
+                                <label><input type="radio" name="" value="s2"> S2</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label>Minat</label>
+                            <div>
+                                <label><input type="checkbox" name="" value="web"> Web</label>
+                                <label><input type="checkbox" name="" value="mobile"> Mobile</label>
+                                <label><input type="checkbox" name="" value="ai"> AI</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label for="">Warna Favorit</label>
+                            <input id="" name="" type="color" value="#2196f3">
+                        </div>
+
+                        <div class="row">
+                            <label for="skill">Level Skill (0-10)</label>
+                            <input id="skill" name="skill" type="range" min="0" max="10" value="5">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="actions">
+                    <input type="submit" value="Kirim">
+                    <input type="reset" value="Reset">
+                </div>
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Praktikum ini merujuk pada konsep dasar <em>HTML Forms</em> (elemen, atribut, tipe input, dan perilaku).
+        </p>
+    </footer>
+</body>
+
+</html>
