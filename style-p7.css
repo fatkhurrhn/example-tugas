@@ -1,0 +1,116 @@
+body {
+    font-family: Arial, sans-serif;
+    /* Jenis huruf yang dipakai di seluruh halaman */
+    background: #f4f4f4;
+    /* Warna latar belakang halaman */
+    padding: 20px;
+    /* Jarak antara tepi layar dan isi halaman */
+    text-align: justify;
+    /* Biar tulisan rapi rata kiri-kanan */
+}
+
+.container {
+    max-width: 800px;
+    /* Lebar maksimal kotak konten */
+    margin: auto;
+    /* Biar kotak konten ada di tengah */
+    background: white;
+    /* Warna latar konten */
+    padding: 20px;
+    /* Jarak isi ke dalam kotak */
+    border-radius: 8px;
+    /* Sudut kotaknya dibikin agak melengkung */
+}
+
+h1,
+h2 {
+    margin-top: 20px;
+    /* Jarak atas untuk setiap judul */
+}
+
+/* Box Story */
+.box {
+    width: 200px;
+    /* Lebar kotaknya */
+    padding: 10px;
+    /* Ruang di dalam kotak */
+    border: 4px solid #4f8cff;
+    /* Garis tebal biru di tepi kotak */
+    margin: 10px 0;
+    /* Jarak luar atas & bawah */
+    background: #e6f0ff;
+    /* Warna latar kotak */
+}
+
+/* Float Story w/ image */
+.float-img {
+    float: right;
+    /* Gambarnya mengapung di sisi kanan teks */
+    width: 240px;
+    /* Lebar gambar (bisa diubah) */
+    height: auto;
+    /* Tinggi otomatis menyesuaikan */
+    margin: 10px;
+    /* Jarak luar gambar */
+    border-radius: 8px;
+    /* Sudut gambar dibuat melengkung */
+}
+
+.clearfix::after {
+    content: "";
+    /* Isi pseudo-element (kosong) */
+    display: block;
+    /* Ditampilkan sebagai blok */
+    clear: both;
+    /* Membersihkan efek float agar container menyesuaikan tinggi */
+}
+
+/* Flex Story */
+.flex {
+    display: flex;
+    /* Membuat kotak ini memakai sistem Flexbox */
+    gap: 10px;
+    /* Jarak antar item di dalam flex */
+    background: #f3ffe6;
+    /* Warna latar area flex */
+    padding: 10px;
+    /* Jarak dalam area flex */
+}
+
+.flex div {
+    background: white;
+    /* Warna kotak di dalam flex */
+    padding: 10px;
+    /* Jarak dalam tiap kotak */
+    border: 1px solid #ccc;
+    /* Garis tipis abu-abu */
+    flex: 1;
+    /* Semua item dibagi rata lebarnya */
+    text-align: center;
+    /* Isi teks di tengah */
+}
+
+/* Grid Story */
+.grid {
+    display: grid;
+    /* Mengaktifkan layout Grid */
+    grid-template-columns: repeat(3, 1fr);
+    /* Membuat 3 kolom dengan lebar sama */
+    gap: 10px;
+    /* Jarak antara kotak grid */
+    background: #e8f6ff;
+    /* Latar area grid */
+    padding: 10px;
+    /* Ruang dalam area grid */
+}
+
+.grid div {
+    background: white;
+    /* Latar kotak grid */
+    padding: 10px;
+    /* Ruang dalam kotak */
+    border: 1px solid #ccc;
+    /* Garis tepi tipis */
+    text-align: center;
+    /* Teks di tengah */
+}

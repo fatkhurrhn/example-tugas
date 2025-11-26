@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kisah Petualangan Arya di Dunia CSS</title>
+   <link rel="stylesheet" href="style-p7.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Kisah Petualangan Arya di Dunia CSS</h1>
+
+        <h2>1. Gerbang Box Model</h2>
+        <p>
+            Di awal petualangannya, Arya menemukan sebuah gerbang besar berbentuk kotak.
+            Penjaganya berkata, "Untuk lewat, kau harus tahu empat lapisan suci: isi, bantalan,
+            perisai, dan ruang luar."
+            Arya menepuk gerbang itu, dan setiap lapisan menyala seakan menyambutnya masuk.
+        </p>
+        <div class="box">Gerbang Kotak Ajaib</div>
+
+        <h2>2. Desa Display</h2>
+        <p>
+            Arya tiba di desa yang penuh penduduk unik. Ada yang berjalan tegak dan memenuhi jalan
+            seperti <em>block</em>, ada yang luwes seperti <em>inline</em>, dan ada yang bisa bertransformasi seperti
+            <em>inline-block</em>.
+            Mereka menyambut Arya dengan ramah dan menunjukkan cara hidup mereka.
+        </p>
+        <p>
+            <span style="display:inline-block; background:#ddd; padding:4px;">Penduduk Inline-Block</span>
+            <!-- Padding itu seperti bantal kecil di dalam kotak.
+            Bikin teksnya tidak nempel ke pinggir, jadi lebih enak dilihat. -->
+        </p>
+
+        <h2>3. Sungai Float</h2>
+        <div class="clearfix">
+            <!-- Ganti URL gambar jika mau -->
+            <img class="float-img" src="https://picsum.photos/200/150" alt="">
+            <p>
+                Ketika sampai di tepi sungai, Arya melihat sebuah perahu dengan simbol angin. Gambar di lambung perahu tampak seperti mengalir mengikuti arus.
+                <br><br>
+                Penjaga sungai berkata, “Di sini, segala yang ringan akan mengapung sesuai arahnya, ada yang ke kiri, ada yang ke kanan.” Arya pun melihat bagaimana air membawa gambar itu, sementara teks di sekitarnya menari mengikuti aliran.
+
+            </p>
+        </div>
+
+        <h2>4. Kota Flexbox</h2>
+        <p>
+            Kota berikutnya penuh keteraturan. Warganya sangat kompak, selalu berbagi ruang dan
+            saling menyesuaikan agar harmoni tercipta.
+        </p>
+        <div class="flex">
+            <div>Warga 1</div>
+            <div>Warga 2</div>
+            <div>Warga 3</div>
+        </div>
+
+        <h2>5. Kerajaan Grid</h2>
+        <p>
+            Di puncak petualangan, Arya memasuki kerajaan tempat segala sesuatu tersusun bak
+            mozaik sempurna. Setiap petak memiliki peran penting dalam menjaga keseimbangan.
+        </p>
+        <div class="grid">
+            <div>Petak 1</div>
+            <div>Petak 2</div>
+            <div>Petak 3</div>
+            <div>Petak 4</div>
+            <div>Petak 5</div>
+            <div>Petak 6</div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

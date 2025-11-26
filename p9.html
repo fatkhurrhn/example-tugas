@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Workshop Praktikum JavaScript – Basics Part 2</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f3f4f6;
+      color: #111827;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 0 0.25rem 0;
+      font-size: 1.6rem;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 1.5rem auto 2.5rem;
+      padding: 0 1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 0.75rem;
+      padding: 1rem 1.1rem;
+      box-shadow: 0 4px 15px rgba(15, 23, 42, 0.06);
+      border: 1px solid #e5e7eb;
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 1.1rem;
+      color: #1f2937;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+    }
+
+    .card h3 {
+      margin: 0.6rem 0 0.3rem;
+      font-size: 0.95rem;
+      color: #4b5563;
+    }
+
+    label {
+      font-size: 0.8rem;
+      color: #4b5563;
+      display: block;
+      margin-top: 0.4rem;
+      margin-bottom: 0.15rem;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.4rem 0.45rem;
+      border-radius: 0.5rem;
+      border: 1px solid #d1d5db;
+      font-size: 0.85rem;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 1px #bfdbfe;
+    }
+
+    button {
+      margin-top: 0.5rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      border: none;
+      font-size: 0.8rem;
+      cursor: pointer;
+      background: #2563eb;
+      color: white;
+      transition: background 0.15s ease, transform 0.05s ease;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    button:active {
+      transform: translateY(1px);
+    }
+
+    .btn-secondary {
+      background: #6b7280;
+    }
+
+    .btn-secondary:hover {
+      background: #4b5563;
+    }
+
+    .output {
+      margin-top: 0.4rem;
+      padding: 0.4rem 0.5rem;
+      min-height: 1.4rem;
+      border-radius: 0.5rem;
+      background: #f9fafb;
+      border: 1px dashed #e5e7eb;
+      font-size: 0.82rem;
+      white-space: pre-wrap;
+    }
+
+    .section-title {
+      margin: 1.5rem 0 0.4rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .section-sub {
+      margin: 0 0 0.9rem;
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+
+    /* Mini project styles */
+    #belanja-list {
+      list-style: none;
+      padding: 0;
+      margin: 0.4rem 0 0;
+      max-height: 260px;
+      overflow-y: auto;
+    }
+
+    #belanja-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.35rem 0.45rem;
+      margin-bottom: 0.2rem;
+      border-radius: 0.5rem;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      font-size: 0.82rem;
+    }
+
+    .badge {
+      padding: 0.05rem 0.45rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      border: 1px solid #93c5fd;
+      color: #1d4ed8;
+      background: #eff6ff;
+      margin-left: 0.35rem;
+    }
+
+    .text-muted {
+      color: #9ca3af;
+      font-style: italic;
+      font-size: 0.8rem;
+    }
+
+    .pill {
+      padding: 0.05rem 0.4rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      border: 1px solid #e5e7eb;
+      background: #f3f4f6;
+      margin-right: 0.3rem;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.7rem;
+      color: #9ca3af;
+      margin-bottom: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Workshop Praktikum JavaScript – Basics Part 2</h1>
+  <p>Latihan interaktif: Conditionals, Loops, Functions, Objects, Arrays & Mini Project Daftar Belanja</p>
+</header>
+
+<main>
+  <!-- BAGIAN 1 – CONDITIONALS -->
+  <div class="section-title">Bagian 1 – Conditionals</div>
+  <p class="section-sub">Latihan if–else, switch, dan ternary operator.</p>
+  <div class="grid">
+    <!-- 1.1 If Else -->
+    <div class="card">
+      <h2>1.1 Kategori Nilai <span class="tag">if / else if</span></h2>
+      <label for="nilai">Nilai ujian (0–100)</label>
+      <input type="number" id="nilai" min="0" max="100" />
+      <button id="btn-nilai">Cek Kategori</button>
+      <div class="output" id="out-nilai"></div>
+    </div>
+
+    <!-- 1.2 Switch -->
+    <div class="card">
+      <h2>1.2 Nama Hari <span class="tag">switch</span></h2>
+      <label for="hari">Angka hari (1–7)</label>
+      <input type="number" id="hari" min="1" max="7" />
+      <button id="btn-hari">Tampilkan Hari</button>
+      <div class="output" id="out-hari"></div>
+    </div>
+
+    <!-- 1.3 Ternary -->
+    <div class="card">
+      <h2>1.3 Usia KTP <span class="tag">ternary ? :</span></h2>
+      <label for="usia">Usia</label>
+      <input type="number" id="usia" min="0" />
+      <button id="btn-usia">Cek Boleh KTP?</button>
+      <div class="output" id="out-usia"></div>
+    </div>
+  </div>
+
+  <!-- BAGIAN 2 – LOOPS -->
+  <div class="section-title">Bagian 2 – Loops</div>
+  <p class="section-sub">Latihan for, while, do–while, break, dan continue.</p>
+  <div class="grid">
+    <!-- 2.1 For -->
+    <div class="card">
+      <h2>2.1 Loop For <span class="tag">for</span></h2>
+      <button id="btn-for">Tampilkan 1–20</button>
+      <div class="output" id="out-for"></div>
+    </div>
+
+    <!-- 2.2 While -->
+    <div class="card">
+      <h2>2.2 Hitung Mundur <span class="tag">while</span></h2>
+      <button id="btn-while">Tampilkan 10–1</button>
+      <div class="output" id="out-while"></div>
+    </div>
+
+    <!-- 2.3 Do While -->
+    <div class="card">
+      <h2>2.3 Minimal Sekali <span class="tag">do while</span></h2>
+      <button id="btn-dowhile">Jalankan</button>
+      <div class="output" id="out-dowhile"></div>
+    </div>
+
+    <!-- 2.4 Break & Continue -->
+    <div class="card">
+      <h2>2.4 Break &amp; Continue <span class="tag">for + if</span></h2>
+      <p style="font-size:0.78rem;margin:0 0 0.35rem;">
+        Aturan: loop 1–10, <b>skip</b> angka 5, <b>stop</b> di angka 8.
+      </p>
+      <button id="btn-breakcontinue">Jalankan Loop</button>
+      <div class="output" id="out-breakcontinue"></div>
+    </div>
+  </div>
+
+  <!-- BAGIAN 3 – FUNCTIONS -->
+  <div class="section-title">Bagian 3 – Functions</div>
+  <p class="section-sub">Function declaration, expression, arrow, default parameter, rest parameter.</p>
+  <div class="grid">
+    <!-- 3.1 luasPersegi -->
+    <div class="card">
+      <h2>3.1 Luas Persegi <span class="tag">function</span></h2>
+      <label for="sisi">Sisi persegi</label>
+      <input type="number" id="sisi" min="0" />
+      <button id="btn-luas">Hitung Luas</button>
+      <div class="output" id="out-luas"></div>
+    </div>
+
+    <!-- 3.2 greet expression -->
+    <div class="card">
+      <h2>3.2 Greet User <span class="tag">function expression</span></h2>
+      <label for="nama-greet">Nama</label>
+      <input type="text" id="nama-greet" />
+      <button id="btn-greet">Sapa</button>
+      <div class="output" id="out-greet"></div>
+    </div>
+
+    <!-- 3.3 Arrow jumlah -->
+    <div class="card">
+      <h2>3.3 Jumlah Dua Angka <span class="tag">arrow =&gt;</span></h2>
+      <label for="angka-a">Angka A</label>
+      <input type="number" id="angka-a" />
+      <label for="angka-b">Angka B</label>
+      <input type="number" id="angka-b" />
+      <button id="btn-jumlah">Hitung</button>
+      <div class="output" id="out-jumlah"></div>
+    </div>
+
+    <!-- 3.4 Default & Rest -->
+    <div class="card">
+      <h2>3.4 Default & Rest <span class="tag">param</span></h2>
+      <h3>a. salam(nama = "Mahasiswa")</h3>
+      <label for="nama-salam">Nama (opsional)</label>
+      <input type="text" id="nama-salam" />
+      <button id="btn-salam">Salam</button>
+      <div class="output" id="out-salam"></div>
+
+      <h3 style="margin-top:0.7rem;">b. jumlahSemua(...nums)</h3>
+      <label for="nums">Angka (pisah dengan koma)</label>
+      <input type="text" id="nums" placeholder="contoh: 1,2,3,4" />
+      <button class="btn-secondary" id="btn-jumlahsemua">Jumlahkan</button>
+      <div class="output" id="out-jumlahsemua"></div>
+    </div>
+  </div>
+
+  <!-- BAGIAN 4 – OBJECTS -->
+  <div class="section-title">Bagian 4 – Objects</div>
+  <p class="section-sub">Object literal, new Object(), dan modifikasi properti.</p>
+  <div class="grid">
+    <!-- 4.1 mahasiswa -->
+    <div class="card">
+      <h2>4.1 Object Mahasiswa <span class="tag">literal</span></h2>
+      <button id="btn-mhs">Tampilkan Data</button>
+      <div class="output" id="out-mhs"></div>
+    </div>
+
+    <!-- 4.2 & 4.3 mobil -->
+    <div class="card">
+      <h2>4.2 &amp; 4.3 Mobil <span class="tag">new Object()</span></h2>
+      <button id="btn-mobil-show">Lihat Mobil</button>
+      <button class="btn-secondary" id="btn-mobil-edit">Ubah Warna + Tambah Mesin</button>
+      <div class="output" id="out-mobil"></div>
+    </div>
+  </div>
+
+  <!-- BAGIAN 5 – ARRAYS -->
+  <div class="section-title">Bagian 5 – Arrays</div>
+  <p class="section-sub">Membuat array, menambah elemen, looping, toString, dan array campuran.</p>
+  <div class="grid">
+    <!-- 5.1 & 5.2 buah -->
+    <div class="card">
+      <h2>5.1 &amp; 5.2 Array Buah <span class="tag">array[]</span></h2>
+      <p class="text-muted">array awal: ["apel", "mangga", "pisang"]</p>
+      <button id="btn-buah-info">Info Pertama & Panjang</button>
+      <button id="btn-buah-push">Tambah (push)</button>
+      <button id="btn-buah-length">Tambah (length)</button>
+      <div class="output" id="out-buah"></div>
+    </div>
+
+    <!-- 5.3 Looping -->
+    <div class="card">
+      <h2>5.3 Looping Buah <span class="tag">for</span></h2>
+      <button id="btn-buah-loop">Tampilkan Semua Buah</button>
+      <div class="output" id="out-buah-loop"></div>
+    </div>
+
+    <!-- 5.4 toString -->
+    <div class="card">
+      <h2>5.4 toString() <span class="tag">array → string</span></h2>
+      <button id="btn-buah-string">Konversi ke String</button>
+      <div class="output" id="out-buah-string"></div>
+    </div>
+
+    <!-- 5.5 Campuran -->
+    <div class="card">
+      <h2>5.5 Array Campuran <span class="tag">tipe beda</span></h2>
+      <button id="btn-campuran">Buat & Tampilkan</button>
+      <div class="output" id="out-campuran"></div>
+    </div>
+  </div>
+
+  <!-- MINI PROJECT – DAFTAR BELANJA -->
+  <div class="section-title">Mini Project – Daftar Belanja</div>
+  <p class="section-sub">
+    Program daftar belanja sederhana menggunakan conditional, loop, function, object, dan array.
+  </p>
+  <div class="card">
+    <h2>Daftar Belanja Satu Halaman <span class="tag">Mini Project</span></h2>
+    <div class="grid" style="gap:0.6rem;">
+      <div>
+        <h3>Tambah Item</h3>
+        <label for="item-nama">Nama Item</label>
+        <input type="text" id="item-nama" placeholder="contoh: Beras" />
+        <label for="item-jumlah">Jumlah</label>
+        <input type="number" id="item-jumlah" min="1" value="1" />
+        <label for="item-kategori">Kategori</label>
+        <select id="item-kategori">
+          <option value="Sembako">Sembako</option>
+          <option value="Buah">Buah</option>
+          <option value="Minuman">Minuman</option>
+          <option value="Lainnya">Lainnya</option>
+        </select>
+        <button id="btn-tambah-item" style="margin-top:0.7rem;">Tambah ke Daftar</button>
+      </div>
+      <div>
+        <h3>Filter & Info</h3>
+        <label for="filter-kategori">Filter kategori</label>
+        <select id="filter-kategori">
+          <option value="Semua">Semua</option>
+          <option value="Sembako">Sembako</option>
+          <option value="Buah">Buah</option>
+          <option value="Minuman">Minuman</option>
+          <option value="Lainnya">Lainnya</option>
+        </select>
+        <button class="btn-secondary" id="btn-hapus-semua" style="margin-top:0.6rem;">Hapus Semua</button>
+        <div class="output" id="out-info-belanja" style="margin-top:0.6rem;"></div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:0.8rem;">Daftar Item</h3>
+    <ul id="belanja-list"></ul>
+    <div class="text-muted" id="empty-belanja">Belum ada item. Tambahkan item di sebelah kiri.</div>
+  </div>
+</main>
+
+<footer>
+  Praktikum JavaScript – dibuat sebagai latihan mandiri. Silakan modifikasi dan kembangkan.
+</footer>
+
+<script>
+  // =======================
+  // BAGIAN 1 – CONDITIONALS
+  // =======================
+
+  // 1.1 If–Else Sederhana
+  document.getElementById("btn-nilai").addEventListener("click", function () {
+    const nilai = Number(document.getElementById("nilai").value);
+    const out = document.getElementById("out-nilai");
+
+    if (isNaN(nilai) || nilai < 0 || nilai > 100) {
+      out.textContent = "Masukkan nilai 0–100.";
+      return;
+    }
+
+    let kategori;
+    if (nilai >= 90) kategori = "A";
+    else if (nilai >= 80) kategori = "B";
+    else if (nilai >= 70) kategori = "C";
+    else if (nilai >= 60) kategori = "D";
+    else kategori = "E";
+
+    out.textContent = Nilai: ${nilai} → Kategori: ${kategori};
+  });
+
+  // 1.2 Switch Case hari
+  document.getElementById("btn-hari").addEventListener("click", function () {
+    const angka = Number(document.getElementById("hari").value);
+    const out = document.getElementById("out-hari");
+    let namaHari;
+
+    switch (angka) {
+      case 1:
+        namaHari = "Senin";
+        break;
+      case 2:
+        namaHari = "Selasa";
+        break;
+      case 3:
+        namaHari = "Rabu";
+        break;
+      case 4:
+        namaHari = "Kamis";
+        break;
+      case 5:
+        namaHari = "Jumat";
+        break;
+      case 6:
+        namaHari = "Sabtu";
+        break;
+      case 7:
+        namaHari = "Minggu";
+        break;
+      default:
+        namaHari = "Input tidak dikenal";
+    }
+
+    out.textContent = namaHari;
+  });
+
+  // 1.3 Ternary Operator KTP
+  document.getElementById("btn-usia").addEventListener("click", function () {
+    const usia = Number(document.getElementById("usia").value);
+    const out = document.getElementById("out-usia");
+    if (isNaN(usia) || usia < 0) {
+      out.textContent = "Masukkan usia yang valid.";
+      return;
+    }
+    const pesan = usia >= 17 ? "Boleh membuat KTP." : "Belum boleh membuat KTP.";
+    out.textContent = Usia ${usia} tahun → ${pesan};
+  });
+
+  // ============
+  // BAGIAN 2 – LOOPS
+  // ============
+
+  // 2.1 For Loop 1–20
+  document.getElementById("btn-for").addEventListener("click", function () {
+    let text = "";
+    for (let i = 1; i <= 20; i++) {
+      text += i + (i < 20 ? ", " : "");
+    }
+    document.getElementById("out-for")..textContent = text;
+  });
+
+  // 2.2 While Loop 10–1
+  document.getElementById("btn-while").addEventListener("click", function () {
+    let i = 10;
+    let text = "";
+    while (i >= 1) {
+      text += i + (i > 1 ? ", " : "");
+      i--;
+    }
+    document.getElementById("out-while").textContent = text;
+  });
+
+  // 2.3 Do–While Halo minimal sekali
+  document.getElementById("btn-dowhile").addEventListener("click", function () {
+    let i = 11; // kondisi awal sudah salah (i <= 10 itu false)
+    let text = "";
+    do {
+      text += "Halo! (do–while tetap jalan minimal sekali)\n";
+      i++;
+    } while (i <= 10);
+    document.getElementById("out-dowhile").textContent = text.trim();
+  });
+
+  // 2.4 Break & Continue
+  document.getElementById("btn-breakcontinue").addEventListener("click", function () {
+    let text = "";
+    for (let i = 1; i <= 10; i++) {
+      if (i === 5) {
+        // skip 5
+        continue;
+      }
+      if (i === 8) {
+        // stop di 8
+        text += "[break di 8]";
+        break;
+      }
+      text += i + " ";
+    }
+    document.getElementById("out-breakcontinue").textContent = text.trim();
+  });
+
+  // ===============
+  // BAGIAN 3 – FUNCTIONS
+  // ===============
+
+  // 3.1 Function Declaration
+  function luasPersegi(sisi) {
+    return sisi * sisi;
+  }
+
+  document.getElementById("btn-luas").addEventListener("click", function () {
+    const sisi = Number(document.getElementById("sisi").value);
+    const out = document.getElementById("out-luas");
+    if (isNaN(sisi) || sisi <= 0) {
+      out.textContent = "Masukkan sisi yang valid.";
+      return;
+    }
+    out.textContent = Luas persegi dengan sisi ${sisi} adalah ${luasPersegi(sisi)}.;
+  });
+
+  // 3.2 Function Expression greet
+  const greet = function (nama) {
+    return Halo, ${nama}! Selamat belajar JavaScript.;
+  };
+
+  document.getElementById("btn-greet").addEventListener("click", function () {
+    const nama = document.getElementById("nama-greet").value.trim();
+    const out = document.getElementById("out-greet");
+    if (!nama) {
+      out.textContent = "Masukkan nama terlebih dahulu.";
+      return;
+    }
+    out.textContent = greet(nama);
+  });
+
+  // 3.3 Arrow Function jumlah
+  const jumlah = (a, b) => a + b;
+
+  document.getElementById("btn-jumlah").addEventListener("click", function () {
+    const a = Number(document.getElementById("angka-a").value);
+    const b = Number(document.getElementById("angka-b").value);
+    const out = document.getElementById("out-jumlah");
+    if (isNaN(a) || isNaN(b)) {
+      out.textContent = "Masukkan kedua angka.";
+      return;
+    }
+    out.textContent = Hasil: ${a} + ${b} = ${jumlah(a, b)};
+  });
+
+  // 3.4 Default parameter & Rest parameter
+  function salam(nama = "Mahasiswa") {
+    return Halo, ${nama}! Semangat praktikum.;
+  }
+
+  function jumlahSemua(...nums) {
+    let total = 0;
+    for (const n of nums) {
+      total += n;
+    }
+    return total;
+  }
+
+  document.getElementById("btn-salam").addEventListener("click", function () {
+    const nama = document.getElementById("nama-salam").value.trim();
+    document.getElementById("out-salam").textContent = salam(nama || undefined);
+  });
+
+  document.getElementById("btn-jumlahsemua").addEventListener("click", function () {
+    const raw = document.getElementById("nums").value;
+    const out = document.getElementById("out-jumlahsemua");
+    if (!raw.trim()) {
+      out.textContent = "Masukkan angka dipisah koma.";
+      return;
+    }
+    const parts = raw.split(",").map((p) => Number(p.trim()));
+    if (parts.some((n) => isNaN(n))) {
+      out.textContent = "Ada nilai yang bukan angka.";
+      return;
+    }
+    out.textContent = Total: ${jumlahSemua(...parts)};
+  });
+
+  // =============
+  // BAGIAN 4 – OBJECTS
+  // =============
+
+  // 4.1 Object Literal mahasiswa
+  const mahasiswa = {
+    nama: "Andi",
+    nim: "2023001",
+    jurusan: "Teknik Informatika",
+    tampilkanData() {
+      return Nama: ${this.nama}\nNIM: ${this.nim}\nJurusan: ${this.jurusan};
+    },
+  };
+
+  document.getElementById("btn-mhs").addEventListener("click", function () {
+    document.getElementById("out-mhs").textContent = mahasiswa.tampilkanData();
+  });
+
+  // 4.2 new Object mobil
+  const mobil = new Object();
+  mobil.brand = "Toyota";
+  mobil.tahun = 2020;
+  mobil.warna = "Hitam";
+
+  function deskripsiMobil() {
+    return `Brand: ${mobil.brand}\nTahun: ${mobil.tahun}\nWarna: ${mobil.warna}${
+      mobil.mesin ? \nMesin: ${mobil.mesin} : ""
+    }`;
+  }
+
+  document.getElementById("btn-mobil-show").addEventListener("click", function () {
+    document.getElementById("out-mobil").textContent = deskripsiMobil();
+  });
+
+  // 4.3 Modifikasi Object
+  document.getElementById("btn-mobil-edit").addEventListener("click", function () {
+    mobil.warna = "Merah"; // ubah warna
+    mobil.mesin = "1.5L"; // tambahkan property baru
+    document.getElementById("out-mobil").textContent =
+      "Setelah modifikasi:\n" + deskripsiMobil();
+  });
+
+  // ==========
+  // BAGIAN 5 – ARRAYS
+  // ==========
+
+  let buah = ["apel", "mangga", "pisang"];
+
+  // 5.1 info pertama & panjang
+  document.getElementById("btn-buah-info").addEventListener("click", function () {
+    const out = document.getElementById("out-buah");
+    out.textContent = `Array buah: [${buah.join(", ")}]\nElemen pertama: ${
+      buah[0]
+    }\nPanjang: ${buah.length}`;
+  });
+
+  // 5.2 tambah dengan push
+  document.getElementById("btn-buah-push").addEventListener("click", function () {
+    buah.push("pepaya");
+    document.getElementById("out-buah").textContent =
+      'Setelah push("pepaya"): [' + buah.join(", ") + "]";
+  });
+
+  // 5.2 tambah dengan length
+  document.getElementById("btn-buah-length").addEventListener("click", function () {
+    buah[buah.length] = "jeruk";
+    document.getElementById("out-buah").textContent =
+      'Setelah tambah via length: [' + buah.join(", ") + "]";
+  });
+
+  // 5.3 Looping array buah
+  document.getElementById("btn-buah-loop").addEventListener("click", function () {
+    let text = "";
+    for (let i = 0; i < buah.length; i++) {
+      text += ${i}: ${buah[i]}\n;
+    }
+    document.getElementById("out-buah-loop").textContent = text.trim();
+  });
+
+  // 5.4 toString
+  document.getElementById("btn-buah-string").addEventListener("click", function () {
+    document.getElementById("out-buah-string").textContent = buah.toString();
+  });
+
+  // 5.5 Array campuran
+  document.getElementById("btn-campuran").addEventListener("click", function () {
+    const campuran = [
+      "teks",
+      123,
+      true,
+      { nama: "objek" },
+      [1, 2, 3],
+    ];
+    document.getElementById("out-campuran").textContent = JSON.stringify(
+      campuran,
+      null,
+      2
+    );
+  });
+
+  // ===========================
+  // MINI PROJECT – DAFTAR BELANJA
+  // ===========================
+
+  // Setiap item adalah OBJECT: { id, nama, jumlah, kategori, grosir:boolean }
+  let daftarBelanja = [];
+  let idCounter = 1;
+
+  const belanjaList = document.getElementById("belanja-list");
+  const emptyBelanja = document.getElementById("empty-belanja");
+  const infoBelanja = document.getElementById("out-info-belanja");
+
+  function renderBelanja() {
+    // gunakan LOOP untuk menggambar ulang list
+    belanjaList.innerHTML = "";
+    const filter = document.getElementById("filter-kategori").value;
+
+    // hitung total item
+    let totalItem = 0;
+
+    for (const item of daftarBelanja) {
+      // CONTINUE: jika filter sedang dipakai
+      if (filter !== "Semua" && item.kategori !== filter) {
+        continue;
+      }
+
+      totalItem += item.jumlah;
+
+      const li = document.createElement("li");
+
+      const left = document.createElement("div");
+      left.textContent = ${item.nama} (${item.jumlah}x) – ${item.kategori};
+
+      if (item.grosir) {
+        const badge = document.createElement("span");
+        badge.className = "badge";
+        badge.textContent = "Grosir";
+        left.appendChild(badge);
+      }
+
+      const right = document.createElement("div");
+      const pillId = document.createElement("span");
+      pillId.className = "pill";
+      pillId.textContent = "#" + item.id;
+      right.appendChild(pillId);
+
+      const btnHapus = document.createElement("button");
+      btnHapus.textContent = "Hapus";
+      btnHapus.className = "btn-secondary";
+      btnHapus.style.marginTop = 0;
+      btnHapus.addEventListener("click", function () {
+        hapusItem(item.id);
+      });
+      right.appendChild(btnHapus);
+
+      li.appendChild(left);
+      li.appendChild(right);
+      belanjaList.appendChild(li);
+    }
+
+    emptyBelanja.style.display = daftarBelanja.length === 0 ? "block" : "none";
+
+    // CONDITIONAL untuk info
+    const pesan =
+      daftarBelanja.length === 0
+        ? "Daftar masih kosong."
+        : Total jenis item: ${daftarBelanja.length}, total jumlah: ${totalItem}.;
+
+    infoBelanja.textContent = pesan;
+  }
+
+  function tambahItem() {
+    const namaInput = document.getElementById("item-nama");
+    const jumlahInput = document.getElementById("item-jumlah");
+    const kategoriSelect = document.getElementById("item-kategori");
+
+    const nama = namaInput.value.trim();
+    const jumlah = Number(jumlahInput.value);
+    const kategori = kategoriSelect.value;
+
+    if (!nama || isNaN(jumlah) || jumlah <= 0) {
+      alert("Nama dan jumlah item harus diisi dengan benar.");
+      return;
+    }
+
+    // CONDITIONAL: jika jumlah > 10 kita beri label "grosir"
+    const grosir = jumlah > 10 ? true : false;
+
+    const itemBaru = {
+      id: idCounter++,
+      nama,
+      jumlah,
+      kategori,
+      grosir,
+    };
+
+    daftarBelanja.push(itemBaru); // ARRAY + OBJECT
+    namaInput.value = "";
+    jumlahInput.value = 1;
+
+    renderBelanja();
+  }
+
+  function hapusItem(id) {
+    // gunakan filter (loop internal) untuk menghapus
+    daftarBelanja = daftarBelanja.filter((item) => item.id !== id);
+    renderBelanja();
+  }
+
+  function hapusSemua() {
+    if (daftarBelanja.length === 0) {
+      alert("Daftar sudah kosong.");
+      return;
+    }
+    const yakin = confirm("Yakin hapus semua item?");
+    if (!yakin) return;
+    daftarBelanja = [];
+    renderBelanja();
+  }
+
+  document
+    .getElementById("btn-tambah-item")
+    .addEventListener("click", tambahItem);
+  document
+    .getElementById("filter-kategori")
+    .addEventListener("change", renderBelanja);
+  document
+    .getElementById("btn-hapus-semua")
+    .addEventListener("click", hapusSemua);
+
+  // render awal
+  renderBelanja();
+</script>
+</body>
+</html>
